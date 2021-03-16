@@ -1,26 +1,61 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div class="cell cell-map">
+    <map-container v-bind:marker-type="markerType"></map-container>
+  </div>
+  <div class="cell cell-option-panel">
+    <select-panel v-on:change-marker-type="setMarkerType"></select-panel>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+  import MapContainer from './components/MapContainer'
+  import SelectPanel from './components/SelectPanel'
 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+	components: {
+		MapContainer,
+		SelectPanel
+	},
+	data(){
+		return{
+			markerType: ''
+		}
+	},
+	methods: {
+		setMarkerType(data){
+			this.markerType = data
+		}
+	}
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style> 
+	html, body {
+		height: 100%;
+		margin: 0;
+	}
+
+	#app {
+		font-family: Avenir, Helvetica, Arial, sans-serif;
+		display: flex;
+		box-sizing: border-box;
+	}
+
+	.cell {
+		background-color: lightgrey;
+	}
+
+	.cell-map {
+		width: 80%;
+		height: 100vh;
+	}
+
+	.cell-option-panel{
+		position: relative;
+		width: 20%;
+		padding: 20px;
+		background: #fff;
+		box-shadow: -2px 0 5px 0 rgb(0, 0, 0, 0.1);
+		z-index: 1;
+	}
 </style>

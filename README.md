@@ -1,4 +1,4 @@
-# okenit-test
+# ОКЕНИТ. Тестовое задание.
 
 ## Project setup
 ```
